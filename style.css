@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+kbd {
+    border: 2px solid black;
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 5px;
+    position: relative;
+}
+kbd > button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+
+kbd:hover > button{
+    display: inline-block;
+}
+main {
+    text-align: center;
+}
+
+main>.wrapper {
+    display: inline-block;
+}

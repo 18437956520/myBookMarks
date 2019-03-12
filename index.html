@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="yy"></div>
+    </main>
+    <footer></footer>
+    <script>
+        var keys = {
+            '0': {
+                0: 'q',
+                1: 'w',
+                2: 'e',
+                3: 'r',
+                4: 't',
+                5: 'y',
+                6: 'u',
+                7: 'i',
+                8: 'o',
+                9: 'p',
+                length: 10
+            },
+            '1': {
+                0: 'a',
+                1: 's',
+                2: 'd',
+                3: 'f',
+                4: 'g',
+                5: 'h',
+                6: 'j',
+                7: 'k',
+                8: 'l',
+                length: 9
+            },
+            '2': {
+                0: 'z',
+                1: 'x',
+                2: 'c',
+                3: 'v',
+                4: 'b',
+                5: 'n',
+                6: 'm',
+                length: 7
+            },
+            length: 3
+        }
+
+        var hash = {
+            q: 'qq.com',
+            w: 'weibo.com',
+            e: 'ele.me',
+            r: 'renren.com',
+            t: 'taobao.com',
+            y: 'yyyh.info',
+            u: 'uc.com',
+            i: 'iqiyi.com',
+            o: 'oppo.com',
+            p: 'pptv.com',
+            a: 'apple.com',
+            s: 'sohu.com',
+            d: 'douyu.com',
+            f: 'fanyi.baidu.com',
+            g: 'google.com',
+            h: 'huawei.com',
+            j: 'jd.com',
+            k: 'kaola.com',
+            l: 'lol.qq.com',
+            z: 'zhihu.com',
+            x: 'xiedaimala.com',
+            c: 'cctv.com',
+            v: 'vivo.com',
+            b: 'baidu.com',
+            n: 'nba.com',
+            m: 'mgtv.com',
+        }
+
+        // var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')// 如果空存 也不会有bug
+        // if(hashInLocalStorage){
+        //     hash = hashInLocalStorage
+        // } 取出 zzz 对应的 hash
+        index = 0
+        while (index < keys['length']) {
+            div1 = document.createElement('div') //div1是个容器 必须是个字符串创建
+            yy.appendChild(div1)
+            row = keys[index] //第一个数组 第二个 第三个
+            index2 = 0
+            while (index2 < row['length']) { //0~9 0~9 0~6
+                z = document.createElement('kbd') //创建kbd y容器
+                z.textContent = row[index2] //z的内容
+                b = document.createElement('button')
+                b.textContent = '编辑'
+                b.id = row[index2]
+                b.onclick = function (sadkksadjsa) {
+                    //console.log(sadkksadjsa.target.id)//显示网址 id
+                    key = sadkksadjsa.target.id//q w e r 
+                    x = prompt('快tm给我网址啊 崽种')// qq.com
+                    hash[key] = x//q = qq.com
+                    localStorage.setItem('zzz', JSON.stringify(hash))//当hash变化时 存储到zzz中
+                }
+                z.appendChild(b)
+                div1.appendChild(z) //放入到div1 中
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+
+        document.onkeypress = function (sadkksadjsa) {
+            key = sadkksadjsa['key']
+            // console.log('摁啥呢？？？')//监听 
+            // console.log('你摁了')
+            // console.log(sadkksadjsa['key'])//只要hash里的key值 拿到用户点击的key
+            website = hash[key] // 得到键对应的网站
+            //console.log(website) 控制台显示对应网站
+            //location.href = 'http://' + website//将当前地址加上 http:// 并当前页面加载
+            window.open('http://' + website, '_blank') //新页面打开
+        }
+    </script>
+</body>
+
+</html>
